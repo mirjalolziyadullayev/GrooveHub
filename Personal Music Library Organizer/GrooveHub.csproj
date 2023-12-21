@@ -3,9 +3,14 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Personal_Music_Library_Organizer</RootNamespace>
+    <RootNamespace>GrooveHub</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ConsoleUI\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
 
 </Project>
