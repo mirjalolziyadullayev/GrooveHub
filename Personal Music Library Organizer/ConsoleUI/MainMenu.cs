@@ -1,10 +1,11 @@
 ﻿using SyncWave.ConsoleUI.SubMenu;
 using SyncWave.Services;
 using Spectre.Console;
+using System.Net.Http.Headers;
 
 namespace SyncWave.ConsoleUI;
 
-internal class MainMenu
+public class MainMenu
 {
     private UserService userService;
     private LibraryService libraryService;
@@ -20,35 +21,40 @@ internal class MainMenu
         libraryService = new LibraryService(musicService);
         musicService = new MusicService();
 
-        musicMenu = new MusicMenu();
+        userMenu = new UserMenu();
         libraryMenu = new LibraryMenu();
         musicMenu = new MusicMenu();
-
-
     }
 
     public void Display()
     {
-        bool loop = false;
-        while (true)
+        bool loop = true;
+        while (loop)
         {
-            var table = new Table();
-
-            
             var choise = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("Sync[green]Wave[/]")
+                    .PageSize(4)
+                    .AddChoices(new[] { 
+                        "Manage users",
+                        "Manage libraries",
+                        "Manage musics\n",
+                        "[red]Exit[/]"}));
 
-            new SelectionPrompt<string>()
-            .Title("[grey] Groove[/][yellow]Hub[/]")
-            .PageSize(10)
-            .MoreChoicesText("[grey](Move up and down to reveal more fruits)[/]")
-            .AddChoices(new[] {
-            "Apple", "Apricot", "Avocado",
-            "Banana", "Blackcurrant", "Blueberry",
-            "Cherry", "Cloudberry", "Cocunut",
-            }));
-
-            // Echo the fruit back to the terminal
-            AnsiConsole.WriteLine($"I agree. {choise} is tasty!");
+            switch(choise)
+            {
+                case "Manage users":
+                    userMenu.Display();
+                    break;
+                case "Manage libraries":
+                    libraryMenu.Display();
+                    break;
+                case "Manage musics":
+                    musicMenu.Display();
+                    break;
+                case "[red]Exit[/]":
+                    return;
+            }
         }
     }
 }

@@ -82,4 +82,30 @@ internal class LibraryService : ILibraryService
         }
         return (foundLibrary, foundMusic);
     }
+    public List<Library> GetAll()
+    {
+        return libraries;
+    }
+    public (bool foundLibrary, bool foundMusic) RemoveMusic(int libraryID, int musicID)
+    {
+        bool foundLibrary = false;
+        bool foundMusic = false;
+        foreach (Library library in libraries)
+        {
+            if (library.Id == libraryID)
+            {
+                foreach (Music music in library.Musics)
+                {
+                    if (music.Id == musicID)
+                    {
+                        foundMusic = true;
+                        library.Musics.Remove(music);
+                    }
+                }
+                foundLibrary = true;
+                break;
+            }
+        }
+        return (foundLibrary, foundMusic);
+    }
 }

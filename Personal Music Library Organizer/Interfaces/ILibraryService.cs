@@ -8,5 +8,7 @@ internal interface ILibraryService
     Library Update(Library library);
     bool Delete(int id);
     Library GetLibrary(int id);
+    List<Library> GetAll();
     (bool foundLibrary, bool foundMusic) AddMusic(int libraryID, int musicID);
+    (bool foundLibrary, bool foundMusic) RemoveMusic(int libraryID, int musicID);
 }
