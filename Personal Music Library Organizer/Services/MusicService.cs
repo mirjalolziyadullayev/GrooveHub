@@ -3,9 +3,9 @@ using SyncWave.Models;
 
 namespace SyncWave.Services;
 
-internal class MusicService : IMusicService
+public class MusicService : IMusicService
 {
-    List<Music> musics;
+    private List<Music> musics;
     public MusicService()
     {
         musics = new List<Music>();
@@ -13,8 +13,7 @@ internal class MusicService : IMusicService
 
     public Music Create(Music music)
     {
-        int index = musics.Count;
-        music.Id = musics[index].Id + 1;
+        music.Id = musics.Count + 1;
         musics.Add(music);
         return music;
     }

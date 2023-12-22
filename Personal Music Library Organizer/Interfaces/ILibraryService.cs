@@ -2,7 +2,7 @@
 
 namespace SyncWave.Interfaces;
 
-internal interface ILibraryService
+public interface ILibraryService
 {
     Library Create(Library library);
     Library Update(Library library);

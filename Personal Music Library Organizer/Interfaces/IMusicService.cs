@@ -2,7 +2,7 @@
 
 namespace SyncWave.Interfaces;
 
-internal interface IMusicService
+public interface IMusicService
 {
     Music Create(Music music);
     Music Update(Music music);

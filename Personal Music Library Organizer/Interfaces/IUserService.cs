@@ -2,7 +2,7 @@
 
 namespace SyncWave.Interfaces;
 
-internal interface IUserService
+public interface IUserService
 {
     User Create(User user);
     User Update(User user);

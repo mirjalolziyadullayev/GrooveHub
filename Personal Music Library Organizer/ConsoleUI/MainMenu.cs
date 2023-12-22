@@ -21,7 +21,7 @@ public class MainMenu
         libraryService = new LibraryService(musicService);
         musicService = new MusicService();
 
-        userMenu = new UserMenu();
+        userMenu = new UserMenu(userService, libraryService);
         libraryMenu = new LibraryMenu();
         musicMenu = new MusicMenu();
     }

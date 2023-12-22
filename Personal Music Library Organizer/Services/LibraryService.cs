@@ -3,10 +3,10 @@ using SyncWave.Models;
 
 namespace SyncWave.Services;
 
-internal class LibraryService : ILibraryService
+public class LibraryService : ILibraryService
 {
-    IMusicService musicService;
-    List<Library> libraries;
+    private IMusicService musicService;
+    private List<Library> libraries;
     public LibraryService(MusicService musicService)
     {
         this.musicService = musicService;
@@ -15,8 +15,7 @@ internal class LibraryService : ILibraryService
 
     public Library Create(Library library)
     {
-        int index = libraries.Count;
-        library.Id = libraries[index].Id + 1;
+        library.Id = libraries.Count + 1;
         libraries.Add(library);
         return library;
     }

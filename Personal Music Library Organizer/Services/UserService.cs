@@ -3,7 +3,7 @@ using SyncWave.Models;
 
 namespace SyncWave.Services;
 
-internal class UserService : IUserService
+public class UserService : IUserService
 {
     private ILibraryService libraryService;
 
@@ -16,8 +16,8 @@ internal class UserService : IUserService
     }
     public User Create(User user)
     {
-        int index = users.LastIndexOf(user);
-        user.Id = users[index].Id + 1;
+        
+        user.Id = users.Count+1;
         users.Add(user);
         return user;
     }
