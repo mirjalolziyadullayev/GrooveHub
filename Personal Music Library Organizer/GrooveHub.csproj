@@ -8,9 +8,4 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ConsoleUI\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
