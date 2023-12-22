@@ -5,7 +5,7 @@ namespace SyncWave.Services;
 
 public class UserService : IUserService
 {
-    private ILibraryService libraryService;
+    private LibraryService libraryService;
 
     private List<User> users;
     public UserService(LibraryService libraryService)
@@ -79,6 +79,10 @@ public class UserService : IUserService
                 if (library != null)
                 {
                     foundLibrary = true;
+                    if (user.SavedLibraries == null)
+                    {
+                        user.SavedLibraries = new List<Library>();
+                    }
                     user.SavedLibraries.Add(library);
                 }
                 break;
@@ -102,6 +106,10 @@ public class UserService : IUserService
                     if (library != null)
                     {
                         foundLibrary = true;
+                        if (user.SavedLibraries == null)
+                        {
+                            user.SavedLibraries = new List<Library>();
+                        }
                         user.SavedLibraries.Remove(library);
                         break;
                     }

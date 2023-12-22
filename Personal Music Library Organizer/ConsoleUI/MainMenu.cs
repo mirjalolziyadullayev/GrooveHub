@@ -1,7 +1,6 @@
-﻿using SyncWave.ConsoleUI.SubMenu;
+﻿using Spectre.Console;
+using SyncWave.ConsoleUI.SubMenu;
 using SyncWave.Services;
-using Spectre.Console;
-using System.Net.Http.Headers;
 
 namespace SyncWave.ConsoleUI;
 
@@ -11,15 +10,15 @@ public class MainMenu
     private LibraryService libraryService;
     private MusicService musicService;
 
-    private UserMenu userMenu;
-    private LibraryMenu libraryMenu;
-    private MusicMenu musicMenu;
+    private readonly UserMenu userMenu;
+    private readonly LibraryMenu libraryMenu;
+    private readonly MusicMenu musicMenu;
 
     public MainMenu()
     {
-        userService = new UserService(libraryService);
-        libraryService = new LibraryService(musicService);
         musicService = new MusicService();
+        libraryService = new LibraryService(musicService);
+        userService = new UserService(libraryService);
 
         userMenu = new UserMenu(userService, libraryService);
         libraryMenu = new LibraryMenu(libraryService);
@@ -35,13 +34,13 @@ public class MainMenu
                 new SelectionPrompt<string>()
                     .Title("Sync[green]Wave[/]")
                     .PageSize(4)
-                    .AddChoices(new[] { 
+                    .AddChoices(new[] {
                         "Manage users",
                         "Manage libraries",
                         "Manage musics\n",
                         "[red]Exit[/]"}));
 
-            switch(choise)
+            switch (choise)
             {
                 case "Manage users":
                     userMenu.Display();

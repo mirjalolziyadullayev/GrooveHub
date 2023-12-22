@@ -5,7 +5,7 @@ namespace SyncWave.Services;
 
 public class LibraryService : ILibraryService
 {
-    private IMusicService musicService;
+    private MusicService musicService;
     private List<Library> libraries;
     public LibraryService(MusicService musicService)
     {
@@ -73,6 +73,10 @@ public class LibraryService : ILibraryService
                 if (music != null)
                 {
                     foundMusic = true;
+                    if (library.Musics == null)
+                    {
+                        library.Musics = new List<Music>();
+                    }
                     library.Musics.Add(music);
                 }
                 foundLibrary = true;
@@ -98,6 +102,10 @@ public class LibraryService : ILibraryService
                     if (music.Id == musicID)
                     {
                         foundMusic = true;
+                        if (library.Musics == null)
+                        {
+                            library.Musics = new List<Music>();
+                        }
                         library.Musics.Remove(music);
                     }
                 }

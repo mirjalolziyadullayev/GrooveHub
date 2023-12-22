@@ -6,6 +6,7 @@ namespace SyncWave.Services;
 public class MusicService : IMusicService
 {
     private List<Music> musics;
+
     public MusicService()
     {
         musics = new List<Music>();
