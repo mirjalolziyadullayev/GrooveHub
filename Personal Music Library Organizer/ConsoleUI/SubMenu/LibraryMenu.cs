@@ -170,9 +170,75 @@ public class LibraryMenu
                     }
                     break;
                 case "Add music to library":
+                    Console.Clear();
 
+                    var Aid = AnsiConsole.Ask<int>("Enter Library [green]ID[/]:");
+                    var AmusicID = AnsiConsole.Ask<int>("Enter Music [green]ID[/]:");
+
+                    (bool foundLibrary, bool foundMusic) = libraryService.AddMusic(Aid, AmusicID);
+
+                    if (foundLibrary == false)
+                    {
+                        var table9 = new Table();
+                        table9.AddColumn("Found Library");
+                        table9.AddRow($"[green]Library with ID[/]: {Aid} not found");
+                        AnsiConsole.Write(table9);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                    if (foundMusic == false)
+                    {
+                        var table10 = new Table();
+                        table10.AddColumn("Found Music");
+                        table10.AddRow($"[green]Music with ID[/]: {AmusicID} not found");
+                        AnsiConsole.Write(table10);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+
+                    var table11 = new Table();
+                    table11.AddColumn("Adding Music to Library");
+                    table11.AddRow($"[green]Music with ID[/]: {AmusicID} added to [green]Library with ID[/]: {Aid}");
+                    AnsiConsole.Write(table11);
                     break;
                 case "Remove music from library\n":
+                    Console.Clear();
+
+                    var Rid = AnsiConsole.Ask<int>("Enter Library [green]ID[/]:");
+                    var RMusicID = AnsiConsole.Ask<int>("Enter Music [green]ID[/]:");
+
+                    (bool RfoundLibrary, bool RfoundMusic) = libraryService.RemoveMusic(Rid, RMusicID);
+
+                    if (RfoundLibrary == false)
+                    {
+                        var table12 = new Table();
+                        table12.AddColumn("Found Library");
+                        table12.AddRow($"[green]Library with ID[/]: {Rid} not found");
+                        AnsiConsole.Write(table12);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                    if (RfoundMusic == false)
+                    {
+                        var table13 = new Table();
+                        table13.AddColumn("Found Music");
+                        table13.AddRow($"[green]Music with ID[/]: {RMusicID} not found");
+                        AnsiConsole.Write(table13);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                    var table15 = new Table();
+                    table15.AddColumn("Removing Music from Library");
+                    table15.AddRow($"[green]Music with ID[/]: {RMusicID} removed from [green]Library with ID[/]: {Rid}");
+                    AnsiConsole.Write(table15);
 
                     break;
                 case "[red]Go back[/]":
