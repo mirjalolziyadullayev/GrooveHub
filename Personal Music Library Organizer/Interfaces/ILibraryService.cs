@@ -1,6 +1,6 @@
-﻿using GrooveHub.Models;
+﻿using SyncWave.Models;
 
-namespace GrooveHub.Interfaces;
+namespace SyncWave.Interfaces;
 
 internal interface ILibraryService
 {
@@ -9,5 +9,4 @@ internal interface ILibraryService
     bool Delete(int id);
     Library GetLibrary(int id);
     (bool foundLibrary, bool foundMusic) AddMusic(int libraryID, int musicID);
-    //(string libraryGenre, bool found) AddMusicToLibraryByGenre(string musicGenre);
 }

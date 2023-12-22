@@ -1,6 +1,6 @@
-﻿using GrooveHub.Models;
+﻿using SyncWave.Models;
 
-namespace GrooveHub.Interfaces;
+namespace SyncWave.Interfaces;
 
 internal interface IMusicService
 {

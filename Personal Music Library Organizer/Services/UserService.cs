@@ -1,17 +1,15 @@
-﻿using GrooveHub.Interfaces;
-using GrooveHub.Models;
+﻿using SyncWave.Interfaces;
+using SyncWave.Models;
 
-namespace GrooveHub.Services;
+namespace SyncWave.Services;
 
 internal class UserService : IUserService
 {
-    private IUserService userService;
     private ILibraryService libraryService;
 
     private List<User> users;
-    public UserService(UserService userService, LibraryService libraryService)
+    public UserService(LibraryService libraryService)
     {
-        this.userService = userService;
         this.libraryService = libraryService;
 
         this.users = new List<User>();
@@ -19,7 +17,7 @@ internal class UserService : IUserService
     public User Create(User user)
     {
         int index = users.LastIndexOf(user);
-        user.Id = users[index].Id+1;
+        user.Id = users[index].Id + 1;
         users.Add(user);
         return user;
     }
@@ -90,27 +88,6 @@ internal class UserService : IUserService
 
         return (foundUser, foundLibrary);
 
-    }
-    public (bool foundUser, bool foundLibrary) AddLibraryByGenre(int userID, string genre)
-    {
-        bool foundUser = false;
-        bool foundLibrary = false;
-        foreach (var user in users)
-        {
-            if (user.Id == userID)
-            {
-                foundUser = true;
-                Library library = libraryService.GetLibraryByMusicGenre(genre);
-                if (library != null)
-                {
-                    foundLibrary = true;
-                    user.SavedLibraries.Add(library);
-                }
-                break;
-            }
-        }
-
-        return (foundUser, foundLibrary);
     }
     public (bool foundUser, bool foundLibrary) RemoveUserLibrary(int userId, int libraryId)
     {

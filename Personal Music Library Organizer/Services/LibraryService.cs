@@ -1,7 +1,7 @@
-﻿using GrooveHub.Interfaces;
-using GrooveHub.Models;
+﻿using SyncWave.Interfaces;
+using SyncWave.Models;
 
-namespace GrooveHub.Services;
+namespace SyncWave.Services;
 
 internal class LibraryService : ILibraryService
 {
@@ -16,7 +16,7 @@ internal class LibraryService : ILibraryService
     public Library Create(Library library)
     {
         int index = libraries.Count;
-        library.Id = libraries[index].Id+1;
+        library.Id = libraries[index].Id + 1;
         libraries.Add(library);
         return library;
     }
@@ -68,7 +68,7 @@ internal class LibraryService : ILibraryService
         bool foundMusic = false;
         foreach (Library library in libraries)
         {
-            if (library.Id ==  libraryID)
+            if (library.Id == libraryID)
             {
                 Music music = musicService.GetMusic(musicID);
                 if (music != null)

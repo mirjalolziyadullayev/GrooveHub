@@ -1,7 +1,7 @@
-﻿using GrooveHub.Interfaces;
-using GrooveHub.Models;
+﻿using SyncWave.Interfaces;
+using SyncWave.Models;
 
-namespace GrooveHub.Services;
+namespace SyncWave.Services;
 
 internal class MusicService : IMusicService
 {
@@ -14,7 +14,7 @@ internal class MusicService : IMusicService
     public Music Create(Music music)
     {
         int index = musics.Count;
-        music.Id = musics[index].Id+1;
+        music.Id = musics[index].Id + 1;
         musics.Add(music);
         return music;
     }

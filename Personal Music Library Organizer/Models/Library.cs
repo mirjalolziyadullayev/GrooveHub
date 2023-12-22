@@ -1,4 +1,4 @@
-﻿namespace GrooveHub.Models;
+﻿namespace SyncWave.Models;
 
 public class Library
 {

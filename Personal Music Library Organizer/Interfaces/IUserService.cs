@@ -1,6 +1,6 @@
-﻿using GrooveHub.Models;
+﻿using SyncWave.Models;
 
-namespace GrooveHub.Interfaces;
+namespace SyncWave.Interfaces;
 
 internal interface IUserService
 {
@@ -10,6 +10,5 @@ internal interface IUserService
     User Get(int id);
     List<User> GetAll();
     (bool foundUser, bool foundLibrary) AddLibrary(int userId, int libraryId);
-    (bool foundUser, bool foundLibrary) AddLibraryByGenre(int userID, string genre);
     (bool foundUser, bool foundLibrary) RemoveUserLibrary(int userId, int libraryId);
 }
