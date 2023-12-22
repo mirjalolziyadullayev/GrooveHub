@@ -130,7 +130,7 @@ public class UserMenu
                     }
                     break;
                 case "Get all users":
-
+                    //////////
                     List<User> users = new List<User>();
                     if (users.Count != 0)
                     {
