@@ -22,7 +22,7 @@ public class MainMenu
         musicService = new MusicService();
 
         userMenu = new UserMenu(userService, libraryService);
-        libraryMenu = new LibraryMenu();
+        libraryMenu = new LibraryMenu(libraryService);
         musicMenu = new MusicMenu(musicService);
     }
 
@@ -49,7 +49,7 @@ public class MainMenu
                 case "Manage libraries":
                     libraryMenu.Display();
                     break;
-                case "Manage musics":
+                case "Manage musics\n":
                     musicMenu.Display();
                     break;
                 case "[red]Exit[/]":

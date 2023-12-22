@@ -44,18 +44,15 @@ public class UserMenu
                     user.LastName = Clastname;
 
                     User createdUser = userService.Create(user);
-                    // Create a table
+                    
                     var table = new Table();
 
-                    // Add some columns
                     table.AddColumn("Created User");
 
-                    // Add some rows
                     table.AddRow($"[green]UserID[/]: {createdUser.Id}");
                     table.AddRow($"[green]User's Firstname[/]: {createdUser.FirstName}");
                     table.AddRow($"[green]User's Firstname[/]: {createdUser.LastName}");
 
-                    // Render the table to the console
                     AnsiConsole.Write(table);
 
                     break;
@@ -72,19 +69,31 @@ public class UserMenu
                     Updateuser.LastName = Ulastname;
 
                     User updatedUser = userService.Update(Updateuser);
-                    // Create a table
-                    var table1 = new Table();
 
-                    // Add some columns
-                    table1.AddColumn("Updated User");
+                    if (updatedUser != null)
+                    {
+                        var table1 = new Table();
 
-                    // Add some rows
-                    table1.AddRow($"[green]UserID[/]: {updatedUser.Id}");
-                    table1.AddRow($"[green]User's Firstname[/]: {updatedUser.FirstName}");
-                    table1.AddRow($"[green]User's Firstname[/]: {updatedUser.LastName}");
+                        table1.AddColumn("Updated User");
 
-                    // Render the table to the console
-                    AnsiConsole.Write(table1);
+                        table1.AddRow($"[green]UserID[/]: {updatedUser.Id}");
+                        table1.AddRow($"[green]User's Firstname[/]: {updatedUser.FirstName}");
+                        table1.AddRow($"[green]User's Firstname[/]: {updatedUser.LastName}");
+
+                        AnsiConsole.Write(table1);
+                    }
+                    else
+                    {
+                        var tablee = new Table();
+                        tablee.AddColumn("Updated User");
+                        tablee.AddRow($"[green]User with ID[/]: {Uid} not found");
+                        AnsiConsole.Write(tablee);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                    
                     break;
                 case "Delete user":
                     Console.Clear();
