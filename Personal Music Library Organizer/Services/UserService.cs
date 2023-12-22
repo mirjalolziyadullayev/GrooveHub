@@ -12,11 +12,10 @@ public class UserService : IUserService
     {
         this.libraryService = libraryService;
 
-        this.users = new List<User>();
+        users = new List<User>();
     }
     public User Create(User user)
     {
-        
         user.Id = users.Count+1;
         users.Add(user);
         return user;

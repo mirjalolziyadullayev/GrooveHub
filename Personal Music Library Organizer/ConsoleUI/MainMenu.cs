@@ -23,7 +23,7 @@ public class MainMenu
 
         userMenu = new UserMenu(userService, libraryService);
         libraryMenu = new LibraryMenu();
-        musicMenu = new MusicMenu();
+        musicMenu = new MusicMenu(musicService);
     }
 
     public void Display()

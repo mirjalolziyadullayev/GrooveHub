@@ -34,6 +34,8 @@ public class UserMenu
             switch (choise)
             {
                 case "Create user":
+                    Console.Clear();
+
                     var Cfirstname = AnsiConsole.Ask<string>("Enter your [green]Firstname[/]:");
                     var Clastname = AnsiConsole.Ask<string>("Enter your [green]Lastname[/]:");
 
@@ -58,11 +60,14 @@ public class UserMenu
 
                     break;
                 case "Update user":
+                    Console.Clear();
+
                     var Uid = AnsiConsole.Ask<int>("Enter your [green]ID[/]:");
                     var Ufirstname = AnsiConsole.Ask<string>("Enter your [green]Firstname[/]:");
                     var Ulastname = AnsiConsole.Ask<string>("Enter your [green]Lastname[/]:");
 
                     User Updateuser = new User();
+                    Updateuser.Id = Uid;
                     Updateuser.FirstName = Ufirstname;
                     Updateuser.LastName = Ulastname;
 
@@ -82,6 +87,8 @@ public class UserMenu
                     AnsiConsole.Write(table1);
                     break;
                 case "Delete user":
+                    Console.Clear();
+
                     var Did = AnsiConsole.Ask<int>("Enter your [green]ID[/]:");
 
                     bool deletedUser = userService.Delete(Did);
@@ -105,6 +112,8 @@ public class UserMenu
 
                     break;
                 case "Get user":
+                    Console.Clear();
+
                     var Gid = AnsiConsole.Ask<int>("Enter your [green]ID[/]:");
 
                     User gottenUser = userService.Get(Gid);
@@ -130,11 +139,11 @@ public class UserMenu
                     }
                     break;
                 case "Get all users":
-                    //////////
-                    List<User> users = new List<User>();
-                    if (users.Count != 0)
+                    Console.Clear();
+                    List<User> getallusers = userService.GetAll();
+                    if (getallusers.Count != 0)
                     {
-                        foreach (User item in userService.GetAll())
+                        foreach (User item in getallusers)
                         {
                             var table6 = new Table();
                             table6.AddColumn("Found User");
@@ -153,12 +162,81 @@ public class UserMenu
 
                     break;
                 case "Add Musiclibrary to user":
+                    Console.Clear();
+
+                    var Aid = AnsiConsole.Ask<int>("Enter your [green]ID[/]:");
+                    var ALibID = AnsiConsole.Ask<int>("Enter Library [green]ID[/]:");
+
+                    (bool foundUser, bool foundLibrary) = userService.AddLibrary(Aid, ALibID);
+
+                    if (foundLibrary == false) 
+                    {
+                        var table8 = new Table();
+                        table8.AddColumn("Found Library");
+                        table8.AddRow($"[green]Library with ID[/]: {ALibID} not found");
+                        AnsiConsole.Write(table8);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                    if (foundUser == false)
+                    {
+                        var table9 = new Table();
+                        table9.AddColumn("Found User");
+                        table9.AddRow($"[green]User with ID[/]: {Aid} not found");
+                        AnsiConsole.Write(table9);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+
+                    var table10 = new Table();
+                    table10.AddColumn("Adding MusicLibrary to uesr");
+                    table10.AddRow($"[green]Library with ID[/]: {ALibID} added to [green]User with ID[/]: {Aid}");
+                    AnsiConsole.Write(table10);
 
                     break;
                 case "Remove MusicLibrary from user\n":
+                    Console.Clear();
+
+                    var Rid = AnsiConsole.Ask<int>("Enter your [green]ID[/]:");
+                    var RLibID = AnsiConsole.Ask<int>("Enter Library [green]ID[/]:");
+
+                    (bool RfoundUser, bool RfoundLibrary) = userService.RemoveUserLibrary(Rid, RLibID);
+
+                    if (RfoundLibrary == false)
+                    {
+                        var table11 = new Table();
+                        table11.AddColumn("Found Library");
+                        table11.AddRow($"[green]Library with ID[/]: {RLibID} not found");
+                        AnsiConsole.Write(table11);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                    if (RfoundUser == false)
+                    {
+                        var table11 = new Table();
+                        table11.AddColumn("Found User");
+                        table11.AddRow($"[green]User with ID[/]: {Rid} not found");
+                        AnsiConsole.Write(table11);
+
+                        Console.WriteLine("Press any key to try again...");
+                        Console.ReadLine();
+                        continue;
+                    }
+                    var table12 = new Table();
+                    table12.AddColumn("Removing MusicLibrary to uesr");
+                    table12.AddRow($"[green]Library with ID[/]: {RLibID} removed from [green]User with ID[/]: {Rid}");
+                    AnsiConsole.Write(table12);
 
                     break;
                 case "[red]Go back[/]":
+                    Console.Clear();
+
                     return;
             }
         }
