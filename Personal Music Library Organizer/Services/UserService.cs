@@ -16,7 +16,7 @@ public class UserService : IUserService
     }
     public User Create(User user)
     {
-        user.Id = users.Count+1;
+        user.Id = users.Count + 1;
         users.Add(user);
         return user;
     }

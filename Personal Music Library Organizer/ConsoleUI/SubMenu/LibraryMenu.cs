@@ -1,11 +1,10 @@
 ﻿using Spectre.Console;
-using SyncWave.Interfaces;
 using SyncWave.Models;
 using SyncWave.Services;
 
 namespace SyncWave.ConsoleUI.SubMenu;
 
-public class LibraryMenu 
+public class LibraryMenu
 {
     private LibraryService libraryService;
     public LibraryMenu(LibraryService libraryService)
@@ -43,7 +42,7 @@ public class LibraryMenu
                     library.Genre = CGenre;
 
                     Library newLibrary = libraryService.Create(library);
-                   
+
                     var table = new Table();
 
                     table.AddColumn("Created Library");
@@ -53,7 +52,7 @@ public class LibraryMenu
                     table.AddRow($"[green]Library's Genre[/]: {newLibrary.Genre}");
 
                     AnsiConsole.Write(table);
-                   
+
                     break;
                 case "Update library":
                     Console.Clear();

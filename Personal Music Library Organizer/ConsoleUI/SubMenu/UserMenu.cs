@@ -22,14 +22,14 @@ public class UserMenu
                 new SelectionPrompt<string>()
                     .Title("Sync[green]Wave[/][grey] / [/]Users")
                     .PageSize(8)
-                    .AddChoices(new[] { 
-                        "Create user", 
-                        "Update user", 
-                        "Delete user", 
-                        "Get user", 
-                        "Get all users", 
-                        "Add Musiclibrary to user", 
-                        "Remove MusicLibrary from user\n", 
+                    .AddChoices(new[] {
+                        "Create user",
+                        "Update user",
+                        "Delete user",
+                        "Get user",
+                        "Get all users",
+                        "Add Musiclibrary to user",
+                        "Remove MusicLibrary from user\n",
                         "[red]Go back[/]"}));
             switch (choise)
             {
@@ -44,7 +44,7 @@ public class UserMenu
                     user.LastName = Clastname;
 
                     User createdUser = userService.Create(user);
-                    
+
                     var table = new Table();
 
                     table.AddColumn("Created User");
@@ -93,7 +93,7 @@ public class UserMenu
                         Console.ReadLine();
                         continue;
                     }
-                    
+
                     break;
                 case "Delete user":
                     Console.Clear();
@@ -107,7 +107,8 @@ public class UserMenu
                         table2.AddColumn("Deleted User");
                         table2.AddRow($"[green]UserID[/]: {Did}");
                         AnsiConsole.Write(table2);
-                    } else
+                    }
+                    else
                     {
                         var table3 = new Table();
                         table3.AddColumn("Deleted User");
@@ -133,7 +134,7 @@ public class UserMenu
                         table4.AddRow($"[green]UserID[/]: {gottenUser.Id}");
                         table4.AddRow($"[green]User's Firstname[/]: {gottenUser.FirstName}");
                         table4.AddRow($"[green]User's Firstname[/]: {gottenUser.LastName}");
-                       
+
                         var innerTable = new Table();
                         innerTable.AddColumn("[green]Saved Libraries[/]");
 
@@ -182,7 +183,8 @@ public class UserMenu
                             table6.AddRow($"[green]User's Firstname[/]: {item.LastName}");
                             AnsiConsole.Write(table6);
                         }
-                    } else
+                    }
+                    else
                     {
                         var table7 = new Table();
                         table7.AddColumn("Found User");
@@ -199,7 +201,7 @@ public class UserMenu
 
                     (bool foundUser, bool foundLibrary) = userService.AddLibrary(Aid, ALibID);
 
-                    if (foundLibrary == false) 
+                    if (foundLibrary == false)
                     {
                         var table8 = new Table();
                         table8.AddColumn("Found Library");
