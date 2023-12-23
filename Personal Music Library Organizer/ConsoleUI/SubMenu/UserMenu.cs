@@ -133,7 +133,27 @@ public class UserMenu
                         table4.AddRow($"[green]UserID[/]: {gottenUser.Id}");
                         table4.AddRow($"[green]User's Firstname[/]: {gottenUser.FirstName}");
                         table4.AddRow($"[green]User's Firstname[/]: {gottenUser.LastName}");
+                        var innerTable = new Table();
+                        innerTable.AddColumn("[green]Saved Libraries[/]");
+
+                        if (gottenUser.SavedLibraries != null)
+                        {
+                            foreach (Library library in gottenUser.SavedLibraries)
+                            {
+                                innerTable.AddRow("------------------------------------");
+                                innerTable.AddRow($"Library ID: {library.Id}");
+                                innerTable.AddRow($"Library Name: {library.Name}");
+                                innerTable.AddRow($"Library Genre: {library.Genre}");
+                                innerTable.AddRow("------------------------------------");
+                            }
+                        }
+                        else
+                        {
+                            innerTable.AddRow("Empty");
+                        }
                         AnsiConsole.Write(table4);
+                        AnsiConsole.Write(innerTable);
+
                     }
                     else
                     {
