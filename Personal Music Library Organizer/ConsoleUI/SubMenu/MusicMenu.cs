@@ -207,6 +207,8 @@ public class MusicMenu
                     }
                     break;
                 case "[red]Go back[/]":
+                    Console.Clear();
+
                     return;
             }
         }

@@ -100,20 +100,21 @@ public class UserService : IUserService
         {
             if (user.Id == userId)
             {
-                foundUser = true;
+                if (user.SavedLibraries == null)
+                {
+                    user.SavedLibraries = new List<Library>();
+                }
                 foreach (Library library in user.SavedLibraries)
                 {
-                    if (library != null)
+                    if (library.Id == libraryId)
                     {
-                        foundLibrary = true;
-                        if (user.SavedLibraries == null)
-                        {
-                            user.SavedLibraries = new List<Library>();
-                        }
                         user.SavedLibraries.Remove(library);
+                        foundLibrary = true;
                         break;
                     }
                 }
+                foundUser = true;
+                break;
             }
         }
 

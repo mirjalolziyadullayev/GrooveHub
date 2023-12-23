@@ -128,7 +128,6 @@ public class LibraryMenu
                     {
                         var table5 = new Table();
                         table5.AddColumn("Found Library");
-
                         table5.AddRow($"[green]LibraryID[/]: {gottenLibrary.Id}");
                         table5.AddRow($"[green]Library's Name[/]: {gottenLibrary.Name}");
                         table5.AddRow($"[green]Library's Genre[/]: {gottenLibrary.Genre}");
@@ -153,8 +152,8 @@ public class LibraryMenu
                             innerTable.AddRow("Empty");
                         }
                         // Add the inner table as a row to the outer table using AddRow
-                        AnsiConsole.Render(table5);
-                        AnsiConsole.Render(innerTable);
+                        AnsiConsole.Write(table5);
+                        AnsiConsole.Write(innerTable);
                     }
                     else
                     {
@@ -265,6 +264,8 @@ public class LibraryMenu
 
                     break;
                 case "[red]Go back[/]":
+                    Console.Clear();
+
                     return;
             }
         }

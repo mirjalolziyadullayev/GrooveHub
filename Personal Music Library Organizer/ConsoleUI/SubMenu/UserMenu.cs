@@ -133,6 +133,7 @@ public class UserMenu
                         table4.AddRow($"[green]UserID[/]: {gottenUser.Id}");
                         table4.AddRow($"[green]User's Firstname[/]: {gottenUser.FirstName}");
                         table4.AddRow($"[green]User's Firstname[/]: {gottenUser.LastName}");
+                       
                         var innerTable = new Table();
                         innerTable.AddColumn("[green]Saved Libraries[/]");
 

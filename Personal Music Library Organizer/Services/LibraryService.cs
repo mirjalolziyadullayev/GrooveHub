@@ -97,16 +97,17 @@ public class LibraryService : ILibraryService
         {
             if (library.Id == libraryID)
             {
+                if (library.Musics == null)
+                {
+                    library.Musics = new List<Music>();
+                }
                 foreach (Music music in library.Musics)
                 {
                     if (music.Id == musicID)
                     {
-                        foundMusic = true;
-                        if (library.Musics == null)
-                        {
-                            library.Musics = new List<Music>();
-                        }
                         library.Musics.Remove(music);
+                        foundMusic = true;
+                        break;
                     }
                 }
                 foundLibrary = true;
