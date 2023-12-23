@@ -43,12 +43,15 @@ public class MainMenu
             switch (choise)
             {
                 case "Manage users":
+                    Console.Clear();
                     userMenu.Display();
                     break;
                 case "Manage libraries":
+                    Console.Clear();
                     libraryMenu.Display();
                     break;
                 case "Manage musics\n":
+                    Console.Clear();
                     musicMenu.Display();
                     break;
                 case "[red]Exit[/]":
