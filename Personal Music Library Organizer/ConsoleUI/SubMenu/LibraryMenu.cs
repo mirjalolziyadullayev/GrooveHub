@@ -62,6 +62,7 @@ public class LibraryMenu
                     var UGenre = AnsiConsole.Ask<string>("Enter Library's [green]Genre[/]:");
 
                     Library updatelibrary = new Library();
+                    updatelibrary.Id = Uid;
                     updatelibrary.Name = UName;
                     updatelibrary.Genre = UGenre;
 
