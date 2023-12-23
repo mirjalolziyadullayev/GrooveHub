@@ -134,31 +134,27 @@ public class LibraryMenu
                         table5.AddRow($"[green]Library's Genre[/]: {gottenLibrary.Genre}");
 
                         var innerTable = new Table();
-                        innerTable.AddColumn("[green]Music ID[/]").RightAligned();
-                        innerTable.AddColumn("[green]Music Name[/]").RightAligned();
-                        innerTable.AddColumn("[green]Music Author[/]").RightAligned();
-                        innerTable.AddColumn("[green]Music Genre[/]").RightAligned();
+                        innerTable.AddColumn("[green]Musics[/]");
+
                         if (gottenLibrary.Musics != null)
                         {
                             foreach (Music music in gottenLibrary.Musics)
                             {
-                                innerTable.AddRow(
-                                    $"Music ID: {music.Id}",
-                                    $"Music Name: {music.Name}",
-                                    $"Music Author: {music.Author}",
-                                    $"Music Genre: {music.Genre}"
-                                );
+                                innerTable.AddRow("------------------------------------");
+                                innerTable.AddRow($"Music ID: {music.Id}");
+                                innerTable.AddRow($"Music Name: {music.Name}");
+                                innerTable.AddRow($"Music Author: {music.Author}");
+                                innerTable.AddRow($"Music Genre: {music.Genre}");
+                                innerTable.AddRow("------------------------------------");
                             }
                         }
                         else
                         {
                             innerTable.AddRow("Empty");
                         }
-
                         // Add the inner table as a row to the outer table using AddRow
-                        table5.AddRow(new Markup("[green]Library's Musics[/]:"), innerTable);
-
-                        AnsiConsole.Write(table5);
+                        AnsiConsole.Render(table5);
+                        AnsiConsole.Render(innerTable);
                     }
                     else
                     {
